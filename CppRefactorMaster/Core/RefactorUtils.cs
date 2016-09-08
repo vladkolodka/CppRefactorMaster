@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CppRefactorMaster.Core {
     public static class RefactorUtils {
-        public static string deleteParams(string source, params string[] paramNames) {
+        public static string DeleteParams(string source, string methodName, params string[] paramNames) {
             return null;
         }
 
-        public static string renameMethod(string source, string oldMmethodName, string newMethodName) {
+        public static string RenameMethod(string source, string oldMmethodName, string newMethodName) {
             return null;
         }
     }
