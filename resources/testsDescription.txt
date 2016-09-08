@@ -1,0 +1,184 @@
+1. удаление параметра
+2. переименование метода
+=========================================
+Список методов:
+string deleteParam(string source, params string[] paramNames);
+string renameMethod(string source, string oldMmethodName, newMethodName);
+
+
+	Удаление параметра
+	
+	Тест 1.
+Вход:
+someMethod(5);
+int someMethod(int argument1){
+}
+
+adgument1
+
+Выход:
+someMethod();
+int someMethod(){
+}
+
+	Test 2.
+
+Вход:
+someMethod(5, "hello");
+int someMethod(int argument1, string message){
+}
+
+message
+
+Выход:
+someMethod(5);
+int someMethod(int argument1){
+}
+
+	Test 3
+
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+int x=0;
+someMethod(5, 10, "hello", 5.5);
+
+message, argument1
+
+Выход:
+someMethod(5, 5.5);
+int someMethod(int age, double price){
+}
+int x=0;
+someMethod(5, 5.5);
+
+	Test 4
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+int
+
+Выход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+	Test 5
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+int, params, argument1, out. 
+
+Выход:
+someMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+
+
+
+	Переименование метода
+
+	Test 1
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+someMethod, reamedMethod
+
+Выход:
+reamedMethod(5, "hello", 5.5);
+int reamedMethod(int age, string message, double price){
+}
+
+
+	Test 2
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+methodName, reamedMethod
+
+Выход:
+someMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+
+	Test 3
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+methodName, reamedMethod
+
+Выход:
+someMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+
+	Test 4
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+methodName, <empty_string>
+
+Выход:
+someMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+
+// exception
+
+	Test 5
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+
+<empty_string>, reamedMethod
+
+Выход:
+someMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+
+// exception
+
+
+	Test 6
+Вход:
+someMethod(5, 10, "hello", 5.5);
+int someMethod(int age, int argument1, string message, double price){
+}
+// someMethod
+
+someMethod, reamedMethod
+
+Выход:
+reamedMethod(5, "hello", 5.5);
+int someMethod(int age, string message, double price){
+}
+// someMethod
+
+	Test 7
+Вход:
+someMethod(5, 10, "hello");
+int someMethod(int age, int argument1, string message = "someMethod"){
+}
+
+
+someMethod, reamedMethod
+
+Выход:
+reamedMethod(5, 10, "hello");
+int reamedMethod(int age, int argument1, string message = "someMethod"){
+}
