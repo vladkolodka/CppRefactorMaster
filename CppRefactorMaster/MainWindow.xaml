@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CppRefactorMaster"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Refactir master" Height="550" Width="825" MinWidth="480" MinHeight="250">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF8787FF" Offset="1"/>
+
+                </GradientStopCollection>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="10, 0, 0, 0" FontFamily="Bauhaus 93" FontWeight="Bold" 
+            HorizontalAlignment="Left" Text="Refactor Master" FontSize="26" VerticalAlignment="Center" Foreground="#FF4D4D4D"/>
+
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+            <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" />
+        </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
+            <Button Content="Rename method" x:Name="RenameMethodButton" Click="RenameMethodButton_OnClick" Padding="5" />
+            <Button Content="Delete parameter" x:Name="RemoveParameterButton" Click="RemoveParameterButton_OnClick" Margin="10 0 0 0" Padding="5"/>
+        </StackPanel>
     </Grid>
 </Window>

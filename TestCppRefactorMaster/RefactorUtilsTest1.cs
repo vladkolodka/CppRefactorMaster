@@ -57,10 +57,10 @@ namespace TestCppRefactorMaster {
         [TestMethod]
         public void TestRenameMethod1() {
             Assert.AreEqual(
-                "reamedMethod(5, \"hello\", 5.5);\r\nint reamedMethod(int age, string message, double price){\r\n}",
+                "renamedMethod(5, \"hello\", 5.5);\r\nint renamedMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
-                    "someMethod", "reamedMethod")
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                    "someMethod", "renamedMethod")
                 );
         }
 
@@ -69,8 +69,8 @@ namespace TestCppRefactorMaster {
             Assert.AreEqual(
                 "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
-                    "methodName", "reamedMethod")
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                    "methodName", "renamedMethod")
                 );
         }
 
@@ -79,8 +79,8 @@ namespace TestCppRefactorMaster {
             Assert.AreEqual(
                 "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
-                    "methodName", "reamedMethod")
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                    "methodName", "renamedMethod")
                 );
         }
 
@@ -89,7 +89,7 @@ namespace TestCppRefactorMaster {
             Assert.AreEqual(
                 "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
                     "methodName", "")
                 );
         }
@@ -99,18 +99,18 @@ namespace TestCppRefactorMaster {
             Assert.AreEqual(
                 "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
-                    "", "reamedMethod")
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                    "", "renamedMethod")
                 );
         }
 
         [TestMethod]
         public void TestRenameMethod6() {
             Assert.AreEqual(
-                "reamedMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                "renamedMethod(5, \"hello\", 5.5);\r\nint renamedMethod(int age, string message, double price){\r\n}",
                 RefactorUtils.RenameMethod(
-                    "someMethod(5, 10, \"hello\", 5.5);\r\nint someMethod(int age, int argument1, string message, double price){\r\n}",
-                    "someMethod", "reamedMethod")
+                    "someMethod(5, \"hello\", 5.5);\r\nint someMethod(int age, string message, double price){\r\n}",
+                    "someMethod", "renamedMethod")
                 );
         }
 

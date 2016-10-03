@@ -8,6 +8,10 @@ namespace CppRefactorMaster.Core {
         // TODO more keywords (read from file)
         private static readonly string[] Keywords = {"if", "for", "while", "switch", "do", "case"};
 
+        private static void LoadKeywordsFromFile(string fileName) {
+            //            Keywords = File.ReadAllLines(fileName);
+        }
+
         public static string DeleteParams(string source, string methodName, params string[] paramNames) {
             return null;
         }
@@ -15,6 +19,8 @@ namespace CppRefactorMaster.Core {
         public static string RenameMethod(string source, string oldMmethodName, string newMethodName) {
             if (Keywords.Contains(oldMmethodName)) throw new ArgumentException("Keyword");
             if (oldMmethodName == newMethodName) return source;
+
+            if (oldMmethodName.Length == 0 || newMethodName.Length == 0) return source;
 
             var methodRegex = new Regex(@"(" + oldMmethodName + @")\s*\(.*\)");
             var code = new StringBuilder(source);
@@ -42,9 +48,8 @@ namespace CppRefactorMaster.Core {
                                 case "//":
                                 case "/*":
                                     skip = true;
-                                    //cursor = 0;
                                     break;
-                                case @"\r\n":
+                                case "\r\n":
                                     state = RefactorState.NewLine;
                                     break;
                                 case "*/":
@@ -58,8 +63,6 @@ namespace CppRefactorMaster.Core {
                             switch (exp) {
                                 case "/*":
                                     skip = true;
-                                    //cursor = 0;
-
                                     break;
                                 case "*/":
                                     cursor = 0;
@@ -76,7 +79,7 @@ namespace CppRefactorMaster.Core {
                 if (skip) offset += oldMmethodName.Length;
                 else {
                     // переименование метода
-                    code.Replace(oldMmethodName, match.Groups[1].ToString(), match.Groups[1].Index,
+                    code.Replace(oldMmethodName, newMethodName, match.Groups[1].Index,
                         oldMmethodName.Length);
 
                     offset += newMethodName.Length;
