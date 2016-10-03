@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Rename method" Grid.Row="0" FontFamily="Segoe UI Black" HorizontalAlignment="Center" FontSize="16"/>
-        <TextBox Text="Old_method_name" Grid.Row="1" TabIndex="0" x:Name="OldMethodNameField" GotFocus="Field_OnGotFocus"/>
-        <TextBox Text="New_method_name" Grid.Row="2" TabIndex="1" x:Name="NewMethodNameField" GotFocus="Field_OnGotFocus"/>
+        <TextBox Text="Old_method_name" Grid.Row="1" TabIndex="0" x:Name="OldMethodNameField" GotFocus="Field_OnGotFocus" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" />
+        <TextBox Text="New_method_name" Grid.Row="2" TabIndex="1" x:Name="NewMethodNameField" GotFocus="Field_OnGotFocus" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center"/>
 
-        <Button Content="Rename" Grid.Row="3" TabIndex="2" Click="ActionButton_OnClick"/>
+        <Button Content="Rename" Grid.Row="3" TabIndex="2" Click="ActionButton_OnClick" FontSize="20"/>
     </Grid>
 </Window>

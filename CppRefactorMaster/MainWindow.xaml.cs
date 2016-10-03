@@ -31,7 +31,12 @@ namespace CppRefactorMaster {
         private void RenameMethodButton_OnClick(object sender, RoutedEventArgs e) {
             IsEnabled = false;
 
-            _renameMethodWindow = new RenameMethodWindow (this, CodeEditorBox.Text){Owner = this};
+            _renameMethodWindow = new RenameMethodWindow(this, CodeEditorBox.Text) {
+                Owner = this
+            };
+
+            _renameMethodWindow.Left = Left - _renameMethodWindow.Width;
+            _renameMethodWindow.Top = Top;
 
             _renameMethodWindow.Show();
             _renameMethodWindow.Closed += (o, args) => IsEnabled = true;
