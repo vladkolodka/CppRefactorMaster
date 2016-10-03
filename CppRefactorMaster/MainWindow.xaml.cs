@@ -1,25 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CppRefactorMaster {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private Window _renameMethodWindow;
+
         public MainWindow() {
             InitializeComponent();
+            CenterWindow();
+            //            LoadCodeFromFile("code.cpp");
+            //            MessageBox.Show(this, AppDomain.CurrentDomain.BaseDirectory);
+            Loaded += (sender, args) => {
+                LoadCodeFromFile("code.cpp");
+                CodeEditorBox.Focus();
+            };
+        }
+
+        private void CenterWindow() {
+            Left = SystemParameters.VirtualScreenWidth / 2 - Width / 2;
+            Top = SystemParameters.VirtualScreenHeight / 2 - Height / 2;
+        }
+
+        private void RenameMethodButton_OnClick(object sender, RoutedEventArgs e) {
+            IsEnabled = false;
+
+            _renameMethodWindow = new RenameMethodWindow (this, CodeEditorBox.Text){Owner = this};
+
+            _renameMethodWindow.Show();
+            _renameMethodWindow.Closed += (o, args) => IsEnabled = true;
+        }
+
+        private void RemoveParameterButton_OnClick(object sender, RoutedEventArgs e) {
+            CodeEditorBox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action) (() => CodeEditorBox.Text = "fff"));
+        }
+
+        private void LoadCodeFromFile(string path) {
+            if(File.Exists(path)) CodeEditorBox.Text = File.ReadAllText(path);
         }
     }
 }
