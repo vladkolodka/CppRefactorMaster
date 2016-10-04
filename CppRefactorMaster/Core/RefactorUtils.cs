@@ -31,7 +31,7 @@ namespace CppRefactorMaster.Core {
                 var methodName = match.Groups[1].ToString();
 
                 // позиция первого символа найденной подстроки
-                var cursor = match.Groups[1].Index - 2;
+                var cursor = match.Groups[1].Index - 2 + offset;
 
                 var skip = false;
                 var state = RefactorState.MethodLine;
