@@ -5,35 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CppRefactorMaster"
         mc:Ignorable="d"
-        Title="Refactir master" Height="550" Width="825" MinWidth="480" MinHeight="250">
+        Title="Refactoring Master" Height="550" Width="825" MinWidth="480" MinHeight="250">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush>
                 <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF8787FF" Offset="1"/>
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF8787FF" Offset="1" />
 
                 </GradientStopCollection>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
+            <RowDefinition Height="50" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Margin="10, 0, 0, 0" FontFamily="Bauhaus 93" FontWeight="Bold" 
-            HorizontalAlignment="Left" Text="Refactor Master" FontSize="26" VerticalAlignment="Center" Foreground="#FF4D4D4D"/>
+        <TextBlock Margin="10, 0, 0, 0" FontFamily="Bauhaus 93" FontWeight="Bold"
+                   HorizontalAlignment="Left" Text="Refactoring Master" FontSize="35" VerticalAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5">
+            <TextBlock.Effect>
+                <DropShadowEffect
+                    ShadowDepth="6"
+                    Direction="320"
+                    Color="Black"
+                    Opacity="0.5"
+                    BlurRadius="4" />
+            </TextBlock.Effect>
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="#FF138B00" Offset="1" />
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1" />
+                    <SkewTransform AngleY="0" AngleX="-20" />
+                    <RotateTransform Angle="0" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
-            <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" />
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" BorderThickness="0,1">
+            <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0" />
         </ScrollViewer>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 10, 0">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
+                    HorizontalAlignment="Right" Margin="0, 0, 10, 0">
             <Button Content="Rename method" x:Name="RenameMethodButton" Click="RenameMethodButton_OnClick" Padding="5" />
-            <Button Content="Delete parameter" x:Name="RemoveParameterButton" Click="RemoveParameterButton_OnClick" Margin="10 0 0 0" Padding="5"/>
+            <Button Content="Delete parameter" x:Name="RemoveParameterButton" Click="RemoveParameterButton_OnClick"
+                    Margin="10 0 0 0" Padding="5" />
         </StackPanel>
     </Grid>
 </Window>
