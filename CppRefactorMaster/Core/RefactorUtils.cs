@@ -22,17 +22,16 @@ namespace CppRefactorMaster.Core {
 
             if (oldMmethodName.Length == 0 || newMethodName.Length == 0) return source;
 
-            var methodRegex = new Regex(@"(" + oldMmethodName + @")\s*\(.*\)");
             var code = new StringBuilder(source);
-
-            var match = methodRegex.Match(code.ToString());
+            var offset = 0;
+            var matches = Regex.Matches(code.ToString(), @"(" + oldMmethodName + @")\s*\(.*\)");
 
             // перебор найденных объявлений и вызовов методов
-            while (match.Length != 0) {
+            foreach (Match match in matches) {
                 var methodName = match.Groups[1].ToString();
 
                 // позиция первого символа найденной подстроки
-                var cursor = match.Groups[1].Index - 2;
+                var cursor = match.Groups[1].Index - 2 + offset;
 
                 var skip = false;
                 var state = RefactorState.MethodLine;
@@ -74,19 +73,14 @@ namespace CppRefactorMaster.Core {
                     cursor--;
                 }
 
-                var offset = match.Groups[1].Index;
-
-                if (skip) offset += oldMmethodName.Length;
-                else {
+                if (!skip) {
                     // переименование метода
-                    code.Replace(oldMmethodName, newMethodName, match.Groups[1].Index,
+                    code.Replace(oldMmethodName, newMethodName, match.Groups[1].Index + offset,
                         oldMmethodName.Length);
 
-                    offset += newMethodName.Length;
+                    offset += newMethodName.Length - methodName.Length;
                 }
 
-                // новый поиск без учета текущего найденного результата
-                match = methodRegex.Match(code.ToString(), offset);
             }
 
             return code.ToString();
