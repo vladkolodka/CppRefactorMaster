@@ -10,7 +10,7 @@ namespace TestCppRefactorMaster {
                 "someMethod();\r\nint someMethod(){\r\n}",
                 RefactorUtils.DeleteParams(
                     "someMethod(5);\r\nint someMethod(int argument1){\r\n}", "someMethod",
-                    "arhument1")
+                    "argument1")
                 );
         }
 
