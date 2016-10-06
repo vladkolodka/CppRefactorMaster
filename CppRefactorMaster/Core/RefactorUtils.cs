@@ -9,7 +9,7 @@ namespace CppRefactorMaster.Core
     public static class RefactorUtils
     {
         // TODO more keywords (read from file)
-        private static readonly string[] Keywords = { "if", "for", "while", "switch", "do", "case" };
+        private static readonly string[] Keywords = { "if", "for", "while", "switch", "do", "case", "int", "out", "params" };
 
         private static void LoadKeywordsFromFile(string fileName)
         {
@@ -55,6 +55,10 @@ namespace CppRefactorMaster.Core
             int comaCounter = 0;
             foreach (Match match in methodDecl)
             {
+                if (match.Groups[2].ToString() == "")
+                {
+                    return source;
+                }
                 //Console.WriteLine(match.Groups[2].ToString());
                 // get coutn befor deleting params from 
                 for (int i = 0; i < match.Groups[2].ToString().Length; i++)
