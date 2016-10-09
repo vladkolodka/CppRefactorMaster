@@ -23,7 +23,7 @@ namespace CppRefactorMaster.Core {
         public static string DeleteParams(string source, string methodName, string paramName)
         {
             // check for existence of the keywords as a paramName
-            if (Keywords.Contains(paramName))
+            if (Keywords.Contains(paramName) || Keywords.Contains(methodName))
             {
                 throw new ArgumentException("Keyword");
             }
@@ -89,18 +89,13 @@ namespace CppRefactorMaster.Core {
             paramName + @"\b\s*(?=\)))");
 
             var Methods = Regex.Matches(workCode.ToString(), getMethods.ToString());
-            var DeclarMethodsColl = Regex.Matches(workCode.ToString(), getDeclarMethods.ToString());
-            Console.WriteLine("There are all methods!!!");
             foreach (Match match in Methods)
             {
                 methodsBeforeChanges.Add(match.Groups[0].ToString());
                 copyMethods.Add(match.Groups[0].ToString());
-                Console.WriteLine(match.Groups[0].ToString());
             }
-            Console.WriteLine();
-            Console.WriteLine("Methods declaration");
 
-
+            var DeclarMethodsColl = Regex.Matches(workCode.ToString(), getDeclarMethods.ToString());
             foreach (Match match in DeclarMethodsColl)
             {
                 int comaCounter = 0;
@@ -125,8 +120,6 @@ namespace CppRefactorMaster.Core {
                 }
             }
 
-            Console.WriteLine();
-            Console.WriteLine("There all methods calls");
             foreach (KeyValuePair<int, List<string>> pair in DeclarCalls)
             {
                 List<string> tempCalls = new List<string>(pair.Value);
@@ -141,6 +134,7 @@ namespace CppRefactorMaster.Core {
                     }
                 }
             }
+
             foreach (string s in methodsBeforeChanges)
             {
                 foreach (Match match in Methods)
@@ -151,6 +145,7 @@ namespace CppRefactorMaster.Core {
                     }
                 }
             }
+
             foreach (string str in methodsBeforeChanges)
             {
                 int comaCounter = 0;
