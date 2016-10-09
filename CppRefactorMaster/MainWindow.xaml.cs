@@ -11,6 +11,7 @@ namespace CppRefactorMaster {
     /// </summary>
     public partial class MainWindow : Window {
         private Window _renameMethodWindow;
+        private Window _deleteParamsWindow;
 
         public MainWindow() {
             InitializeComponent();
@@ -43,7 +44,19 @@ namespace CppRefactorMaster {
         }
 
         private void RemoveParameterButton_OnClick(object sender, RoutedEventArgs e) {
-            CodeEditorBox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action) (() => CodeEditorBox.Text = "fff"));
+            IsEnabled = false;
+
+            _deleteParamsWindow = new DeleteParamsWindow(this, CodeEditorBox.Text)
+            {
+                Owner = this
+            };
+
+            _deleteParamsWindow.Left = Left - _deleteParamsWindow.Width;
+            _deleteParamsWindow.Top = Top;
+
+            _deleteParamsWindow.Show();
+            _deleteParamsWindow.Closed += (o, args) => IsEnabled = true;
+
         }
 
         private void LoadCodeFromFile(string path) {
