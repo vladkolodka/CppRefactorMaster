@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 using CppRefactorMaster.Core;
 
@@ -27,12 +28,18 @@ namespace CppRefactorMaster {
 
         private void ActionButton_OnClick(object sender, RoutedEventArgs e) {
 
-            Console.WriteLine(_code);
-
             _window.CodeEditorBox.Text = RefactorUtils.RenameMethod(_code, OldMethodNameField.Text, NewMethodNameField.Text);
 
-            _window.Focus();
             Close();
+            _window.Focus();
+        }
+
+        private void RenameMethodWindow_OnPreviewKeyDown(object sender, KeyEventArgs e) {
+            if(e.Key == Key.Escape) {
+                e.Handled = true;
+                Close();
+                _window.Focus();
+            }
         }
     }
 }

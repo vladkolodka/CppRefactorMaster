@@ -8,13 +8,14 @@
         Title="Refactoring Master" Height="550" Width="825" MinWidth="480" MinHeight="250">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush>
+            <!--<LinearGradientBrush>
                 <GradientStopCollection>
                     <GradientStop Color="White" Offset="0" />
                     <GradientStop Color="#FF8787FF" Offset="1" />
 
                 </GradientStopCollection>
-            </LinearGradientBrush>
+            </LinearGradientBrush>-->
+            <ImageBrush ImageSource="resources/background.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -37,8 +38,8 @@
             </TextBlock.Effect>
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0" />
-                    <GradientStop Color="#FF138B00" Offset="1" />
+                    <GradientStop Color="#FFFFC447" Offset="0" />
+                    <GradientStop Color="#FFE4E4E4" Offset="1" />
                 </LinearGradientBrush>
             </TextBlock.Foreground>
             <TextBlock.RenderTransform>
@@ -51,9 +52,12 @@
             </TextBlock.RenderTransform>
         </TextBlock>
 
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" BorderThickness="0,1">
-            <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0" />
-        </ScrollViewer>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" BorderThickness="0 2 0 0" BorderBrush="#2779D7">
+            <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0"
+                     Background="#C2474747" Foreground="White" FontSize="15" VerticalScrollBarVisibility="Auto" 
+                     Padding="5" Margin="5 0 5 5"/>
+
+        </Border>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
                     HorizontalAlignment="Right" Margin="0, 0, 10, 0">

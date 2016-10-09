@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CppRefactorMaster"
         mc:Ignorable="d"
-        Title="Rename method" Height="273.259" Width="213.928" ResizeMode="NoResize" ShowInTaskbar="False">
+        Title="Rename method" Height="273.259" Width="213.928" ResizeMode="NoResize" ShowInTaskbar="False"
+        PreviewKeyDown="RenameMethodWindow_OnPreviewKeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
