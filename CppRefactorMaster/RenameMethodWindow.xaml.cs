@@ -28,8 +28,14 @@ namespace CppRefactorMaster {
 
         private void ActionButton_OnClick(object sender, RoutedEventArgs e) {
 
-            _window.CodeEditorBox.Text = RefactorUtils.RenameMethod(_code, OldMethodNameField.Text, NewMethodNameField.Text);
-
+            try
+            {
+                _window.CodeEditorBox.Text = RefactorUtils.RenameMethod(_code, OldMethodNameField.Text, NewMethodNameField.Text);
+            }
+            catch (ArgumentException exeption)
+            {
+                MessageBox.Show(exeption.Message);
+            }
             Close();
             _window.Focus();
         }

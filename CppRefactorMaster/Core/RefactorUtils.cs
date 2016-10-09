@@ -82,7 +82,7 @@ namespace CppRefactorMaster.Core {
 
             // regex for extracting method signature
             Regex getMethods = new Regex(@"(" + methodName + @")\s*\(.*\)");
-            Regex getDeclarMethods = new Regex(@"(" + methodName + @")\s*\(.*(\s*\w+((\d*|\w*)*)*\s*" + paramName + @".*)\)(?=\s*\n*\{|\;)");
+            Regex getDeclarMethods = new Regex(@"(?<=\w+((\d*|\w*)*)*\s+)("+methodName+@")\s*\(.*"+ paramName + @"\b.*\)");
             Regex argRegex = new Regex(@"(?<=" + methodName + @"s\*)(\s*\w+((\d*|\w*)*)\s*" + paramName +
             @"\b\s*(?=\)))|(\s*\w+((\d*|\w*)*)\s*" + paramName + @"\b\s*\,\s*)" +
             @"|(\,\s*\w+((\d*|\w*)*)\s*" + paramName + @"\b\s*)|(\,\s*\w+((\d*|\w*)*)\s*" +

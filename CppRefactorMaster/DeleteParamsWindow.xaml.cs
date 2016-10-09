@@ -44,7 +44,14 @@ namespace CppRefactorMaster
 
             Console.WriteLine(_code);
 
-            _window.CodeEditorBox.Text = RefactorUtils.DeleteParams(_code, MethodName.Text, Parametr.Text);
+            try
+            {
+                _window.CodeEditorBox.Text = RefactorUtils.DeleteParams(_code, MethodName.Text, Parametr.Text);
+            }
+            catch (ArgumentException exeption)
+            {                
+                MessageBox.Show(exeption.Message);
+            }
 
             _window.Focus();
             Close();
