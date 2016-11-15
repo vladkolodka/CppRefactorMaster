@@ -58,12 +58,19 @@
     <Compile Include="DeleteParamsWindow.xaml.cs">
       <DependentUpon>DeleteParamsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MagicNumber.xaml.cs">
+      <DependentUpon>MagicNumber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RenameMethodWindow.xaml.cs">
       <DependentUpon>RenameMethodWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="DeleteParamsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MagicNumber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

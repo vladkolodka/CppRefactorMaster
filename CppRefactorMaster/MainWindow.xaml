@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CppRefactorMaster"
         mc:Ignorable="d"
-        Title="Refactoring Master" Height="550" Width="825" MinWidth="480" MinHeight="250">
+        Title="Refactoring Master" Height="550" Width="825" MinWidth="480" MinHeight="250"
+        WindowStartupLocation="CenterScreen" Loaded="MainWindow_OnLoaded">
     <Grid>
         <Grid.Background>
             <!--<LinearGradientBrush>
@@ -18,14 +18,26 @@
             <ImageBrush ImageSource="resources/background.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="50" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <TextBlock Margin="10, 0, 0, 0" FontFamily="Bauhaus 93" FontWeight="Bold"
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="LoadFile_Button"/>
+                <MenuItem Header="Save" Click="SaveFile_Button"/>
+                <MenuItem Header="Close" Click="CloseForm"/>
+            </MenuItem>
+            <MenuItem Header="Refactor">
+                <MenuItem Header="Rename method" Click="RenameMethodButton_OnClick"/>
+                <MenuItem Header="Delete parameters" Click="RemoveParameterButton_OnClick"/>
+                <MenuItem Header="Magic number" Click="MagicNumber_OnClick"/>
+                <MenuItem Header="Block format" Click="BlockFormat_OnClick"/>
+            </MenuItem>
+        </Menu>
+
+        <TextBlock Margin="10, 0, 0, 0" FontFamily="Bauhaus 93" FontWeight="Bold" Grid.Row="1"
                    HorizontalAlignment="Left" Text="Refactoring Master" FontSize="35" VerticalAlignment="Center"
                    RenderTransformOrigin="0.5,0.5">
             <TextBlock.Effect>
@@ -52,18 +64,20 @@
             </TextBlock.RenderTransform>
         </TextBlock>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" BorderThickness="0 2 0 0" BorderBrush="#2779D7">
+        <Border Grid.Row="2" Grid.Column="0" BorderThickness="0 2 0 0" BorderBrush="#2779D7">
             <TextBox x:Name="CodeEditorBox" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0"
                      Background="#C2474747" Foreground="White" FontSize="15" VerticalScrollBarVisibility="Auto" 
                      Padding="5" Margin="5 0 5 5"/>
 
         </Border>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
+<!--
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center"
                     HorizontalAlignment="Right" Margin="0, 0, 10, 0">
             <Button Content="Rename method" x:Name="RenameMethodButton" Click="RenameMethodButton_OnClick" Padding="5" />
             <Button Content="Delete parameter" x:Name="RemoveParameterButton" Click="RemoveParameterButton_OnClick"
                     Margin="10 0 0 0" Padding="5" />
         </StackPanel>
+-->
     </Grid>
 </Window>

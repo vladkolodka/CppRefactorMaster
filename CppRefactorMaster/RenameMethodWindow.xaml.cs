@@ -1,22 +1,13 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
-using CppRefactorMaster.Core;
 
 namespace CppRefactorMaster {
     /// <summary>
     ///     Interaction logic for RenameMethodWindow.xaml
     /// </summary>
-    public partial class RenameMethodWindow : Window {
-        private readonly string _code;
-        private readonly MainWindow _window;
-
-        public RenameMethodWindow(MainWindow window, string code) {
-            _window = window;
-            _code = code;
-
+    public partial class RenameMethodWindow {
+        public RenameMethodWindow() {
             InitializeComponent();
             OldMethodNameField.Focus();
         }
@@ -27,24 +18,13 @@ namespace CppRefactorMaster {
         }
 
         private void ActionButton_OnClick(object sender, RoutedEventArgs e) {
-
-            try
-            {
-                _window.CodeEditorBox.Text = RefactorUtils.RenameMethod(_code, OldMethodNameField.Text, NewMethodNameField.Text);
-            }
-            catch (ArgumentException exeption)
-            {
-                MessageBox.Show(exeption.Message);
-            }
             Close();
-            _window.Focus();
         }
 
         private void RenameMethodWindow_OnPreviewKeyDown(object sender, KeyEventArgs e) {
-            if(e.Key == Key.Escape) {
+            if (e.Key == Key.Escape) {
                 e.Handled = true;
                 Close();
-                _window.Focus();
             }
         }
     }
